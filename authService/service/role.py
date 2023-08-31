@@ -16,7 +16,6 @@ def delete_role(role_name):
     result = role_map.remove_role(role_name)
     if result:
         return Response('Role Already Deleted.')
-    # 这里只给一个general的操作失败的提示，防止出现恶意套取用户名的行为
     return Response('Role Deletion Failed', status=400)
 
 

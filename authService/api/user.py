@@ -11,13 +11,14 @@ def hello_world_test(request):
 
 
 @csrf_exempt
-@api_view(['POST', 'DELETE'])
-def basic_user_action(request):
+@api_view(['POST'])
+def add_user_action(request):
     username = request.data.get('username')
-    if request.method == 'POST':
-        password = request.data.get('password')
-        return create_user(username, password)
-    elif request.method == 'DELETE':
-        return delete_user(username)
-    else:
-        raise NotImplementedError
+    password = request.data.get('password')
+    return create_user(username, password)
+
+
+@api_view(['DELETE'])
+def delete_user_action(request):
+    username = request.data.get('username')
+    return delete_user(username)

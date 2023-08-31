@@ -25,7 +25,7 @@ class RoleMap:
             return False
         role = self._role_map.pop(role_name)
         for _, related_user in role.user_assignments.items():
-            related_user.unbind_role(role.name)
+            related_user.unbind_role(role)
         return True
 
     def get_role(self, role_name):

@@ -5,6 +5,10 @@ from authService.entity.user import user_map
 
 
 def authenticate_user(username, password):
+    if not username:
+        return Response('Username should not be empty', status=400)
+    if not password:
+        return Response('Password should not be empty', status=400)
     user = user_map.get_user(username)
     if not user:
         return Response('User Does Not Exists', status=400)

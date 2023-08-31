@@ -4,6 +4,10 @@ from authService.entity.user import user_map
 
 
 def create_user(username, password):
+    if not username:
+        return Response('Username could not be empty!', status=400)
+    if not password:
+        return Response('Password could not be empty!', status=400)
     result = user_map.add_user(username, password)
     if result:
         return Response('User Creation Success!')
