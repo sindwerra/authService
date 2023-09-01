@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Set, Dict
 
 from authService.entity.role import Role
-from authService.entity.token import Token
+from authService.entity.token import Token, token_bucket
 
 
 class UserMap:
@@ -36,6 +36,8 @@ class UserMap:
         user = self._username_map.pop(username)
         for _, related_role in user.role_binds.items():
             related_role.unassign_user(user)
+        if hasattr(user, 'token'):
+            token_bucket.remove_token(user.token)
         return True
 
 

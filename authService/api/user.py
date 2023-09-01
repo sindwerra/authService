@@ -10,6 +10,11 @@ def hello_world_test(request):
     return Response('hello world!')
 
 
+@api_view(['GET'])
+def index_page(request):
+    return Response('This is an index page of authService, please follow the README to use it, have fun!')
+
+
 @csrf_exempt
 @api_view(['POST'])
 def add_user_action(request):

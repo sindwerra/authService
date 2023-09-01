@@ -195,18 +195,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 400)
         self.assertEqual(r.json(), 'Token Does Not Exists')
 
-        # 测试3：Token过期，失败 TODO
-        # r = client.post(
-        #     '/api/role/check/',
-        #     {
-        #         'token': 'not-exist',
-        #         'role': 'check_role_suc'
-        #     }
-        # )
-        # self.assertEqual(r.status_code, 400)
-        # self.assertEqual(r.json(), 'Token Does Not Exists')
-
-        # 测试4：Role不存在，失败
+        # 测试3：Role不存在，失败
         r = client.post(
             '/api/role/check/',
             {
@@ -217,7 +206,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 400)
         self.assertEqual(r.json(), 'Role Does Not Exists.')
 
-        # 测试5：Role存在，但没有与User绑定，返回False
+        # 测试4：Role存在，但没有与User绑定，返回False
         r = client.post(
             '/api/role/add/',
             {
@@ -352,17 +341,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 400)
         self.assertEqual(r.json(), 'Token Does Not Exists')
 
-        # 测试4 使用过期的Token获取Role，失败 TODO
-        # r = client.post(
-        #     '/api/role/list/',
-        #     {
-        #         'token': 'does-not-exist',
-        #     }
-        # )
-        # self.assertEqual(r.status_code, 400)
-        # self.assertEqual(r.json(), 'Token Does Not Exists')
-
-        # 测试5 删除一个不存在的Role再获取当前所有Role，成功，预期结果为2
+        # 测试4 删除一个不存在的Role再获取当前所有Role，成功，预期结果为2
         r = client.delete(
             '/api/role/delete/',
             {
@@ -380,7 +359,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()), 2)
 
-        # 测试6 删除之前已经删除的Role再获取当前所有Role，成功，预期结果为2
+        # 测试5 删除之前已经删除的Role再获取当前所有Role，成功，预期结果为2
         r = client.delete(
             '/api/role/delete/',
             {
@@ -398,7 +377,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()), 2)
 
-        # 测试7 删除另外一个Role，成功，预期结果为1
+        # 测试6 删除另外一个Role，成功，预期结果为1
         r = client.delete(
             '/api/role/delete/',
             {
@@ -416,7 +395,7 @@ class RoleTestCase(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()), 1)
 
-        # 测试8 删除另外一个Role，成功，预期结果为0
+        # 测试7 删除另外一个Role，成功，预期结果为0
         r = client.delete(
             '/api/role/delete/',
             {

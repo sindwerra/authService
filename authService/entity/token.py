@@ -2,7 +2,9 @@ from datetime import timedelta
 
 from django.utils.datetime_safe import datetime
 
-from authService.settings import TOKEN_EXPIRATION_DURATION_HOUR, SECRET_SALT
+from django.conf import settings
+
+import jwt
 
 
 class TokenBucket:
@@ -33,8 +35,15 @@ class TokenBucket:
 class Token:
 
     def __init__(self, username, password):
-        self.expiration = datetime.now() + timedelta(hours=TOKEN_EXPIRATION_DURATION_HOUR)
-        self.content = f'{SECRET_SALT}-{username}-{self.expiration}'
+        self.expiration = datetime.now() + timedelta(hours=settings.TOKEN_EXPIRATION_DURATION_HOUR)
+        self.content = jwt.encode(
+            {
+                "username": username,
+                "exp": self.expiration,
+            },
+            settings.SECRET_SALT,
+            algorithm='HS256'
+        )
         self.user = None
 
     def is_expired(self):

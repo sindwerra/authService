@@ -4,6 +4,7 @@ from authService.api import user, role, auth
 
 urlpatterns = [
     path("hello-world/", user.hello_world_test),
+    path("index/", user.index_page),
     path("user/add/", user.add_user_action),
     path("user/delete/", user.delete_user_action),
     path("role/list/", role.get_all_roles),
