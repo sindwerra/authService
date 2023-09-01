@@ -1,0 +1,72 @@
+### 可调用测试
+GET localhost:8000/api/hello-world
+
+### 创建用户测试
+POST localhost:8000/api/user/add/
+
+{
+  "username": "sindwerra",
+  "password": "102102102a"
+}
+
+### 删除用户测试
+DELETE localhost:8000/api/user/delete/
+
+{
+  "username": "sindwerra"
+}
+
+### 创建角色测试
+POST localhost:8000/api/role/add/
+
+{
+  "role": "demon hunter"
+}
+
+### 删除角色测试
+DELETE localhost:8000/api/role/delete/
+
+{
+  "role": "demon hunter"
+}
+
+### 认证测试
+POST localhost:8000/api/authenticate/
+
+{
+  "username": "sindwerra",
+  "password": "102102102a"
+}
+
+### TOKEN失效测试
+POST localhost:8000/api/invalidate/
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbmR3ZXJyYSIsImV4cCI6MTY5MzU0ODY5Mn0.2HOFQJhphuCRakdoexEbrf0_7vTUXHCOj7fnR2VsR-s"
+}
+
+
+### 获取角色测试
+POST localhost:8000/api/role/list/
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbmR3ZXJyYSIsImV4cCI6MTY5MzU0ODcyN30.MGJewGZnFped-i836qfc97rUPD9xbV6B9k00_M79zps"
+}
+
+### 用户绑定角色测试
+POST localhost:8000/api/role/assign/
+
+{
+  "role": "demon hunter",
+  "user": "sindwerra"
+}
+
+
+### 检查角色测试
+POST localhost:8000/api/role/check/
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbmR3ZXJyYSIsImV4cCI6MTY5MzU0ODcyN30.MGJewGZnFped-i836qfc97rUPD9xbV6B9k00_M79zps",
+  "role": "demon hunter"
+}
+

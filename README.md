@@ -219,3 +219,7 @@ python manage.py runserver
 1. Django （服务端框架）
 2. PyJWT（成熟的Python Token使用方案）
 3. django-rest-framework（基于Django的成熟的API框架工具）
+
+
+## TIPS
+apiTests路径下有一个基本的sample_test.http文件可以在PyCharm中直接调用检查各接口的运行
