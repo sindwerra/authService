@@ -2,20 +2,24 @@
 
 ## 目录
 - [基本介绍](#基本介绍)
-- [安装](#安装)
-- [启动](#启动)
-- [执行测试用例](#执行测试用例)
+- [安装并启动](#安装并启动)
 - [API](#api)
 - [第三方包](#第三方包)
 
 ## 基本介绍
 AuthService是一个基于Django搭建的简单后台API服务，其提供了基本的用户创建以及鉴权功能，同时提供了角色创建和绑定用户的功能
 
-## 安装
+## 安装并启动
 
 ### 将仓库代码clone到本地
 ```shell
 git clone https://github.com/sindwerra/authService.git
+```
+
+### 在本地代码根目录下安装配置并启动虚拟环境
+```shell
+python3 -m venv .
+source ./bin/activate
 ```
 
 ### 执行pip命令安装依赖包
@@ -23,10 +27,16 @@ git clone https://github.com/sindwerra/authService.git
 pip install -r requirements.txt
 ```
 
-## 执行测试用例
+### 启动
+#### 执行测试用例
 在真正启动服务前，可以先通过Django提供的test方法执行测试用例
 ```shell
 python manage.py test --pattern="*_test.py" 
+```
+
+#### 控制台命令行启动
+```shell
+python manage.py runserver
 ```
 
 ## API
@@ -206,14 +216,6 @@ role: 需要检查是否绑定用户的角色
 "True"
 ```
 
-
-## 启动
-有两种方式启动AuthService服务
-### PyCharm启动
-### 控制台命令行启动
-```shell
-python manage.py runserver
-```
 
 ## 第三方包
 1. Django （服务端框架）
